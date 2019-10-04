@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./SearchResults.css";
+require("dotenv").config();
 
 class SearchResults extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class SearchResults extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyBt5tEOXCSpy9yaXY4JlSTVIzI-79IUmFU"
+        `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${process.env.REACT_APP_API_KEY}`
       )
       .then(result => {
         console.log("result: ", result.data.items);
